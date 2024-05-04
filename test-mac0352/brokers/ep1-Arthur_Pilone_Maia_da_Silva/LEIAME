@@ -1,0 +1,57 @@
+### Abril de 2022
+### MAC0352 Redes de Computadores e Sistemas Distribuídos
+# EP 1 - Broker MQTT
+## Por Arthur Pilone Maia da Silva, 
+### NUSP 11795450
+
+Código de um simples _**Broker MQTT**_ para o 'primeiro' exercício programa de MAC0352.
+
+***
+
+## Compilação e Execução
+
+Compile o código rodando 
+
+```$> make```.
+
+Como o programa cria um número de arquivos temporários na pasta `/tmp` durante execução, é necessário executá-lo em modo privilegiado. Para invocar a execução do programa, faça
+
+```$> sudo ./ep1-broker <porta> ```,
+
+onde `<porta>` é o número da porta em que o broker deve escutar por conexões de clientes. **Caso a porta não for especificada, o _broker_ escutará por conexões na porta padrão do MQTT - a 1883**.
+
+É **fortemente desencorajado** encerrar a execução do programa do _broker_ antes de que todos os clientes se desconectem. Pode ser que ocorram erros inesperados.
+
+Para limpar os dados armazenados entre diferentes execuções do programa, utilize o comando 
+
+```$> sudo make clean```.
+
+Mais uma vez, é necessário executar o comando em modo privilegiado por se tratar da remoção de arquivos dentro do diretório `/tmp`.
+
+***
+
+### Limitações
+
+- **Este código só é suportado em sistemas UNIX**
+
+- O comprimento máximo de um pacote recebido deve ser de 4096 bytes.
+
+- Antes de se limpar os dados armazenados pelo broker utilizando o comando descrito anteriormente, **o número máximo de tópicos diferentes e de clientes de _client\_id_ s diferentes armazenados é de 65534**.
+
+***
+
+### Demais Informações Relevantes
+
+- A única versão aceita por este _broker_ é a MQTT V3.1.1 (ou level 4);
+
+- Se o cliente tentar usar um _client\_id_ de tamanho 0 e quiser que exista persistência nos seus dados (`clean_session = 0`), a conexão é recusada com código 2 no pacote `CONNACK`;
+
+- Não são aceitas a utilização de nomes de usuário nem de autenticação usando senhas. Um pedido de conexão contendo usuário e / ou senha será recusado com código 4 no pacote `CONNACK`; 
+
+- Não são aceitas mensagens de testamento (_will messages_).  Um pedido de conexão contendo uma mensagem de testamento será recusado com código 5 no pacote `CONNACK`;
+
+- Só são suportadas trocas de mensagens com _Quality of Service_ (**QoS**) iguais a 0. Pacotes de `PUBLISH` com QoS > 0 implicarão a desconexão dos clientes que os enviarem. 
+
+- Pacotes de `PUBLISH` contendo mensagens retidas a tópicos específicos também implicarão a desconexão dos clientes que os enviarem.
+
+### Para mais informações e análises veja o arquivo slides.pdf e o código

@@ -1,0 +1,3 @@
+Para compilar o broker, use o comando: make
+Para executar o broker, use o comando: ./server <Porta desejada>
+

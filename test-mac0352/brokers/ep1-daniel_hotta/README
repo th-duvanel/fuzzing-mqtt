@@ -1,0 +1,19 @@
+
+DANIEL HOTTA - 9922700
+
+
+Infelizmente, não há muito a apresentar. Tentei o meu máximo para entregar algo
+que pudesse ser interativo, mas nem isso consegui...
+
+Deixei o código comentado para explicar o raciocínio que tive, mesmo não
+conseguindo completar. 
+
+
+Execução:
+
+make 
+
+./ep1 1883
+
+make clean
+

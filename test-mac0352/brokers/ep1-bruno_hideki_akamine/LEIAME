@@ -1,0 +1,4 @@
+Objetivo - Implementação de um broker MQTT na versão 3.1.1 que aceita conexões de clientes sub e pub.Para compilar o programa escreva "make" no terminal e para executá-lo, escreva: ./broker 1883
+O número na frente do programa pode ser mudado e corresponde a porta na qual o broker estará escutando. O exemplo dado segue a conveção do protocolo MQTT.
+Possíveis falhas na hora da desconexão de clientes pode acabar não deletando arquivos em /tmp. Caso isso ocorra escreva "make cleantmp" no terminal para remover esses arquivos.
+Para apagar o executável escreva "make clean" no terminal.

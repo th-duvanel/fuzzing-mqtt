@@ -1,0 +1,23 @@
+
+#define LISTENQ 1
+#define MAXDATASIZE 100
+#define MAXLINE 4096
+#define MAX_NUMBER_TOPICS 10
+#define MAX_TOPIC_LEN 128
+#define FILENAME_LEN 30
+#define MAX_NUMBER_PROCESS 500000
+
+#define CONNECT 1
+#define CONNACK 2
+#define PUBLISH 3
+#define PUBACK 4
+#define PUBREC 5
+#define PUBREL 6
+#define PUBCOMP 7
+#define SUBSCRIBE 8
+#define SUBACK 9
+#define UNSUBSCRIBE 10
+#define UNSUBACK 11
+#define PINGREQ 12
+#define PINGRESP 13
+#define DISCONNECT 14

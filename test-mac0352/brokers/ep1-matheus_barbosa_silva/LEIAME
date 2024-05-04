@@ -1,0 +1,13 @@
+Nome: Matheus Barbosa Silva - NUSP: 11221741
+EP1 - MAC0352
+
+O broker MQTT usa como parâmetro uma porta. Para testar usando as configurações
+padrões dos clientes mosquitto, use a porta 1883.
+Esse EP pode ser compilado usando o comando make.
+Após o processo de compilação, é gerado um arquivo binário com o nome broker que
+pode ser executado da seguinte forma:
+
+- Exemplo de execução:
+./broker 1883
+
+Detalhes adicionais acerca da implementação estão descritos no arquivo Relatorio.pdf

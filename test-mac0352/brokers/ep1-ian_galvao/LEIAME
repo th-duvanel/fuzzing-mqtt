@@ -1,0 +1,53 @@
+/*****************************************************
+/*****************************************************
+/*****************************************************
+/*
+/*
+/*
+/*
+/*      EP1 IAN GALVAO NºUSP 6817482
+/*
+/*
+/*
+/*
+/****************************************************/
+/*
+Este EP é uma versão simples de um broker MQTT 3.1.1
+
+Para recebe conexões MQTT do tipo Connect, Publish, Subscribe e
+Disconnect. Mensagens publicadas em um tópico são enviadas para
+cada cliente inscrito no tópico.
+Para compilar o código execute:
+    $ make
+Para rodar o arquivo, execute:
+    $ ./ep1 <numero da porta>
+
+O servidor ficará aguardando conexões na porta indicada.
+
+LIMITAÇÔES:
+    -O servidor não elimina processos de subscribers que desconectaram,
+    acarretando no uso de recursos. Subscribers não devem desconectar.
+    -O servidor não envia pacotes PINGRSP.
+    -O servidor não mantém a identificação dos clientes e dos pacotes.
+
+PROBLEMAS:
+    O servidor possui os seguintes problemas detectados:
+        -Um arquivo FIFO é criado e não eliminado após a execução.
+        Não consegui utilizar o unlink no modo O_RDWR. O template
+        é dXXXXXX.
+
+
+/***********************************************************
+ * *********************************************************
+ *            IMPORTANTE
+ * ********************************************************
+ * ********************************************************
+SOFTWARE DE TERCEIROS:
+    Este broker utiliza os arquivos hashmap.c e hashmap .h, escritos
+    por Joshua J Baker, sob a licensa GNU GPL. O software foi extraído
+    de https://github.com/tidwall/hashmap.c.
+    A licença do hashmap.c está junto com o projeto no arquivo LICENSE.
+    A licença se refere apenas ao hashmap.c e hashmap.h, não ao restante
+    do código.
+
+*/

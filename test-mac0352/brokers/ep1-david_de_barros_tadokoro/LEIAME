@@ -1,0 +1,51 @@
+################################################################################
+*                             MAC0352 - EP1                                    *
+################################################################################
+
+  NOME:   David de Barros Tadokoro
+  NUSP:   10300507
+  PROF.:  Daniel Macedo Batista
+
+--------------------------------------------------------------------------------
+*                                 RESUMO                                       *
+--------------------------------------------------------------------------------
+
+  Este Exercício Programa 1 é um trabalho feito para a disciplina de MAC0352 (Redes de Computadores e Sistemas Distribuídos) cursada no primeiro semestre de 2022 pelo curso de Bacharelado em Ciência da Computação do Instituto de Matemática e Estatística da Universidade de São Paulo (IME-USP).
+
+  O exercício consistiu em implementarmos um servidor broker MQTT na versão 3.1.1 do protocolo. Este broker é simples e, essencialmente, deve:
+  - Aceitar conexões de clientes;
+  - Inscrever clientes (subscribers) em um dado tópico;
+  - Receber publicações de clientes (publishers) em um dado tópico;
+  - Enviar publicações recebidas para os respectivos subscribers;
+  - Encerrar conexões de clientes.
+
+  Este broker funciona com os os clientes mosquitto: "mosquitto_sub" e "mosquitto_pub".
+
+--------------------------------------------------------------------------------
+*                                CONTEÚDO                                      *
+--------------------------------------------------------------------------------
+
+  Este diretório deve conter:
+  - Um arquivo LEIAME (este arquivo);
+  - Um arquivo Makefile para montagem do executável;
+  - O código fonte com nome brokerMQTT.c;
+  - Slides explicativos com nome mac0352-slides-ep1_david-de-barros-tadokoro.pdf.
+
+--------------------------------------------------------------------------------
+*                          COMPILAÇÃO E EXECUÇÃO                               *
+--------------------------------------------------------------------------------
+
+  Para compilar o código fonte em executável, digite no terminal (neste diretório):
+  > make
+
+  Para rodar o executável gerado, digite no terminal (neste diretório):
+  > ./brokerMQTT <Número da porta em que o broker irá escutar por conexões>
+
+  Para apagar o executável, digite no terminal (neste diretório):
+  > make clean
+  ou, simplesmente,
+  > rm brokerMQTT
+
+################################################################################
+*                                                                              *
+################################################################################

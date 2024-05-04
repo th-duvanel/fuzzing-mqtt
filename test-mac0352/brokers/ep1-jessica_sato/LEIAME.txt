@@ -1,0 +1,26 @@
+EP1 MQTT BROKER
+MAC0352 - Redes - 2022/1
+Aluna: Jessica Yumi Nakano Sato
+NUSP: 11795294
+
+Esse é um programa desenvolvido para o EP 1 da disciplina MAC0352 e consiste em desenvolver uma versão simplificada de um broker mqtt cujos clientes podem ser testados com os mosquitto_clients.
+
+Para compilar: make
+Para rodar: ./broker <porta>
+Para limpar: make clean 
+
+Sobre o Makefile: Há apenas um arquivo que deve ser compilado: broker.c. Para alguns computadores ele precisa da flag -pthread pois estamos utilizando em seu código criacões e operacões de threads da biblioteca pthread.h.
+
+Utilizacão:
+Rode o programa como indicado (./broker <porta>). Nessa porta ficará conectado o servidor implementado.
+Para utilizar o programa é necessário ter clientes do tipo mqtt (exemplo mosquitto_clients). 
+Exemplo de execucão:
+
+Terminal 1: ./broker 8000
+Terminal 2: mosquitto_sub -t topico -p 8000 -h 127.0.0.1
+Terminal 3: mosquitto_pub -t topico -m mensagem -p 8000 -h 127.0.0.1
+
+A palavra "mensagem" deve aparecer no segundo terminal.
+
+Para mais informacões sobre a implementacao, ver pdf e codigo.
+

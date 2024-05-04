@@ -1,0 +1,5 @@
+O código fonte do programa está contido em ep1.c
+
+O makefile tem receitas para o broker, e para limpar os arquivos que podem ser deixados pelo servidor em /tmp/
+
+

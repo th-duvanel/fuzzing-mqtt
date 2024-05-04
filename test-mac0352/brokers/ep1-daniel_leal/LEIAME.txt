@@ -1,0 +1,10 @@
+Daniel Oliveira Sanches Leal - 11321180
+
+Para compilar
+
+gcc -Wall -o server main.c -lm
+
+Para rodar
+
+./server {NUMERO_DA_PORTA}
+

@@ -1,0 +1,14 @@
+Como compilar o binário:
+    O binário do programa "ep1-broker.c" pode ser compilado digitando apenas "make" na linha de comando do terminal dentro do diretório.
+
+Como executar o binário:
+    O binário pode ser executado da seguinte maneira no terminal: ./ep1-broker <porta_de_escuta_de_conexões>
+
+Como conectar clientes ao Broker MQTT:
+    Para conectar um cliente: 
+    - Subscritor, execute no terminal: mosquitto_sub -V 311 -h <ip_do_broker> -p <porta_de_escuta_do_broker> -t <"nome_do_topico">.
+    Exemplo: mosquitto_sub -V 311 -h localhost -p 8000 -t "topic"
+
+    - Publicador, execute no terminal: mosquitto_pub -V 311 -h <ip_do_broker> -p <porta_de_escuta_do_broker> -t <"nome_do_topico"> -m "mensagem_publicada"
+    Exemplo: mosquitto_pub -V 311 -h localhost -p 8000 -t "topic" -m "message"
+    

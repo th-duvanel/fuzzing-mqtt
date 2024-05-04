@@ -1,0 +1,48 @@
+/* 
+ *****************************************************
+ *** Redes de Computadores e Sistemas Distribuídos ***
+ ***                    MAC0352                    ***
+ ***                      EP1                      ***
+ ***                                               ***
+ *** Por: Guilherme Moreno Silva                   ***
+ *** Numero USP: 10843437                          ***
+ ***                                               ***
+ ****************************************************/
+
+Um broker MQTT simples com suporte para múltiplos clientes, inscrição e publicação de mensagens simultâneas. 
+
+IMPLEMENTAÇÂO:
+
+Para cada cliente conectado é criado um socket de comunicação e um processo filho, que irá gerenciar a comunicação através do socket. Inicialmente, o novo processo aguarda por dados e, ao receber processa os seguintes tipos de pacotes MQTT: CONNECT, PUBLISH, SUBSCRIBE, PINGREQ, DISCONNECT
+
+Para permitir que um subscriber receba mensagens do seu tópico de inscrição, são utilizados FIFOS. Ao receber um pacote SUBSCRIBE, o processo filho irá criar um novo FIFO localizado na pasta “/tmp/broker/{tópico}/{xxxxxx}”, onde “{tópico}” é o nome do tópico e “{xxxxxx}” é um conjunto de seis caracteres aleatórios. Em seguida, o processo passará a verificar simultaneamente o socket e o FIFO. As mensagens escritas no FIFO serão enviadas para o subscriber através do socket.
+
+Caso receba um pacote PUBLISH, o processo irá abrir a pasta “/tmp/broker/{tópico}/” e em seguida irá abrir cada um dos arquivos da mesma, que serão os FIFOs dos clientes inscritos naquele tópico.
+Ao fim, é fechado o arquivo e, quando o cliente inscrito é fechado, o FIFO é excluído.
+
+
+COMPILAÇÂO:
+
+* IMPORTANTE: É necessário um compilador de C que suporte o padrão C99 e Gnulib.
+
+Para compilar, acesse a pasta com os arquivos fonte e execute:
+-> make
+ 
+Para compilar com mensagens de debug, execute:
+-> make clean
+-> make debug
+
+
+EXECUÇÂO:
+ 
+* IMPORTANTE: Para executar o servidor é necessário permissão de superusuário *
+
+O servidor recebe apenas um argumento, a porta onde ele irá escutar por conexões.
+
+Para iniciar o servidor na porta padrão do MQTT (1883), execute:
+-> sudo ./broker 1883
+
+Por padrão serão notificadas apenas a conexão e a desconexão de clientes.
+Caso as mensagens de debug forem ativadas, será mostrado na saída padrão os tipos
+de cada pacote recebido e enviado e também dados relativos aos FIFOs dos clientes subscriber.
+Mensagens de erro são mostrada por padrão.

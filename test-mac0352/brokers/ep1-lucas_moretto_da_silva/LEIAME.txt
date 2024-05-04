@@ -1,0 +1,44 @@
+Nome: Lucas Moretto da Silva
+NUSP: 9778602
+
+##################################################################
+
+1. Para limpar os arquivos de build e executáveis de
+   compilações anteriores.
+
+$ make clean
+
+##################################################################
+
+2. Para gerar o executável do broker rode o comando abaixo.
+   O arquivo executável build/broker será gerado.
+
+$ make
+
+##################################################################
+
+3. Para rodar o executável deve-se utilizar permissões de root.
+
+$ sudo build/broker <porta do servidor>
+
+##################################################################
+
+4. Para gerar o executável build/broker e rodar automaticamente
+   na porta 1883.
+
+$ sudo make run
+
+##################################################################
+
+5. Para executar o broker dentro de um contêiner do Docker
+   na porta 1883.
+
+$ make docker
+
+##################################################################
+
+6. Para executar os scripts de teste utilizados nos experimentos,
+   acesse a pasta tests e rode o comando abaixo (estando dentro
+   da pasta tests).
+
+$ bash run-tests.sh

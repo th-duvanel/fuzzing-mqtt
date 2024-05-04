@@ -1,0 +1,19 @@
+Thiago Guerrero
+NUSP: 11275297
+
+Para gerar o executável do broker na raiz do projeto, rode:
+$ make
+
+Para executar o servidor do broker, rode com permissão de root*:
+$ ./broker <Porta>
+
+Para encerrar a execução do servidor, pressione CTRL + C.**
+
+* Algumas rotinas de criação e deleção de arquivos pode falhar caso não seja executado
+como root.
+
+** Esse é um passo importante pois realiza a limpeza dos arquivos temporários criados. 
+Caso o processo seja encerrado de outra maneira, será necessário excluir a pasta /tmp/ep1
+do seu S.O para executar o servidor novamente.
+
+

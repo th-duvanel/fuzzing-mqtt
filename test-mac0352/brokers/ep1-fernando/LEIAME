@@ -1,0 +1,103 @@
+EP1 de MAC0352
+
+nome: Fernando Henrique Junqueira Muniz Barbi Silva
+nUSP: 11795888
+
+---
+
+DESCRIÇÃO
+
+Este projeto consiste em um broker básico de MQTT 3.1.1, que faz uso de
+forks e pipes para a comunicação entre clientes.
+
+---
+
+CÓDIGO
+
+O arquivo ep1.c foi desenvolvido a partir dos códigos diponibilizados
+pelo professor Daniel Batista <batista@ime.usp.br> no e-Disciplinas.
+
+O cabeçalho e a biblioteca de funções auxiliares foi desenvolvida inteiramente
+para este EP.
+
+---
+
+LIMITAÇÕES
+
+Essa implementação não suporta todos os comandos da versão 3.1.1 do protocolo.
+
+Algumas das limitações conhecidas são:
++ Cada subscriber só pode assinar um tópico por vez;
++ Não há como de desinscrever de um tópico sem desconectar o cliente;
++ Esta versão supõe QoS = 0.
+
+---
+
+EXECUÇÃO
+
+Após a compilação com o Makefile, execute o programa da seguinte forma:
+
+./ep1 1883
+
+É possível inserir qualquer qualquer porta, mas a 1883 é a porta padrão
+para um broker MQTT. É necessário possuir permissão para rodar em portas
+inferiores a 1024.
+
+Após esse comando, o servidor será executado e ficará escutando por
+conexões na porta 1883 TCP.
+
+---
+
+FUNCIONAMENTO
+
+Para interagir com o broker, é possível utilizar os clientes mosquitto_sub
+e mosquitto_pub disponíveis no pacote mosquitto-clients.
+
+Para conectar um cliente subscriber, basta rodar o comando:
+
+mosquitto_sub -h <ip> -p <porta> -V 311 -t <tópico>
+
+E para um cliente publisher, o comando:
+
+mosquitto_pub -h <ip> -p <porta> -V 311 -t <tópico> -m <mensagem>
+
+Ambos em que:
+<ip> = ip da máquina em que o broker está rodando;
+<porta> = porta em que o broker está ouvindo;
+<tópico> = string do tópico desejado;
+<mensagem> = string da mensagem a ser enviada.
+
+Obs: caso esteja executando em localhost na porta 1883, é possível omitir as
+flags -h e -p.
+
+Você perceberá que o cliente subscriber recebe as mensagens enviadas
+pelo cliente publisher se enviada para o respectivo tópico.
+Todos os subscribers recebem a mesma mensagem se assinarem o mesmo tópico.
+
+Exemplos (em diferentes terminais):
+mosquitto_sub -V 311 -t home
+mosquitto_sub -V 311 -t work
+mosquitto_sub -V 311 -t farm
+mosquitto_pub -V 311 -t home -m "Lar doce lar."
+mosquitto_pub -V 311 -t work -m "Nao posso falar agora. Trabalhando..."
+mosquitto_pub -V 311 -t farm -m "Cocorico!!!"
+
+
+---
+
+ERROS CONHECIDOS
+
+1. Arquivos remanescentes
+Caso a execução do servidor seja interrompida, é possível que existam arquivos
+ou diretórios remanescentes no diretório raiz.
+Será preciso apagá-los manualmente para o bom funcionamento do programa novamente.
+Você será avisado na linha de comando caso isso aconteça.
+
+2. Escalabilidade dos clientes
+Conforme mais e mais subscribers vão se conectando ao servidor, o tempo de 
+processamento aumenta consideravelmente. 
+Em um cenário com muitos clientes, é uma boa ideia aguardar alguns segundos
+após o SUBSCRIBE antes de enviar um PUBLISH para o tópico.
+Pode ser que, se o PUBLISH for enviado imediatamente após o surgimento do
+subscriber, o pipe que receberia essa mensagem não tenha sido criado ainda,
+logo, o subscriber não receberá o pacote.

@@ -1,0 +1,7 @@
+(Tentativa de) Implementação de um broker MQTT como ep1 da disciplina MAC0352.
+
+Compilação: make ep1 | make
+Remoção: make clean
+Uso: ./ep1 [PORTA]
+
+Obs: Como não consegui fazer o broker funcionar de maneira correta, decidi manter os fprintf's que estava usando como forma de debug, apenas para mostrar o progresso que tive, e ter algo a mostrar.

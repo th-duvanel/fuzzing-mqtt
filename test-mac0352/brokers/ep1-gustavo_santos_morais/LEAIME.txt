@@ -1,0 +1,4 @@
+Gustavo Santos Morais - 11221932
+
+A compilação do programa é feita utilizando o comando make no terminal.
+Para executar o programa, digite no terminal ./ep1 <número da porta>

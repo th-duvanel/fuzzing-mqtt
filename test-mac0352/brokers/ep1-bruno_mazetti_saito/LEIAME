@@ -1,0 +1,5 @@
+Para compilar os binários apenas digite 'make all' na linha de comando do terminal.
+
+O binário gerado será nomeado de mqtt-broker.
+
+Para executar o broker escreva no terminal: ./mqtt-broker <porta>
